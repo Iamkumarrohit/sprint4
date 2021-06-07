@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Menu Page</title>
+    <style> 
+    img{
+        width:300px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    #content{
+        display:flex;
+        flex-direction: row;
+    
+    }
+    h1{
+        text-align: center;
+        color: red;
+
+    }
+    h3{
+        color: blue;
+    }
+
+    #come{
+        display:flex;
+        flex-direction: row;
+        margin-top: 50px;
+        -ms-flex: 10px;
+    }
+
+    button{
+        background-color:red;
+        color: white;
+        font-size: 15px;
+        width:100px;
+        height:30px;
+    }
+    button:hover{
+        background-color:greenyellow;
+    }
+    </style>
+
+
+
+</head>
+<body>
+    <h1>Menu</h1>
+    <h3>Avilable Items</h3>
+    <div id="content"> 
+
+    </div>
+
+    <h1>Comming Soon</h1>
+    <div id="come">
+          
+         </div>
+</body>
+</html>
+
+<script> 
+
+var items=[
+    {
+        name:'Bonless Chicken',
+        price:120,
+        image:' download.jpg',
+        time:'5',
+        discription:'This Item is Very Spicy'
+    },
+
+
+     {
+            name: 'Bonless Chicken',
+                price: 120,
+                    image: ' download.jpg',
+            time: '5',
+            discription: 'This Item is Very Spicy'
+
+
+
+        },
+         {
+                name: 'Bonless Chicken',
+                    price: 120,
+                       image: ' download.jpg',
+                time: '5',
+                discription: 'This Item is Very Spicy'
+
+
+
+            },
+
+
+            {
+        name: 'Bonless Chicken',
+        price: 120,
+        image: ' download.jpg',
+        time: '5',
+        discription: 'This Item is Very Spicy'
+
+
+
+    },
+
+
+    {
+        name: 'Bonless Chicken',
+        price: 120,
+        image: ' download.jpg',
+        time: '5',
+        discription: 'This Item is Very Spicy'
+
+
+
+    },
+
+
+   
+    
+     
+]
+
+
+    if (localStorage.getItem('items') == null) {
+        localStorage.setItem('items', JSON.stringify(items));
+    }
+
+ 
+ 
+
+//console.log(data)
+ 
+function how(){
+    var data = JSON.parse(localStorage.getItem('items'))
+     
+
+   // for(var i=0;i<data.length;i++){
+       data.forEach(function (x){ 
+    var cont=document.getElementById("content")
+    var div = document.createElement('div')
+
+        var but=document.createElement('button');
+        but.innerHTML="Add to Cart"
+        //but.setAttribute('class',addCart);
+
+    var h=document.createElement('h2')
+    h.innerHTML=x.name;
+    h.style.color="green"
+
+    var p=document.createElement('p');
+    p.innerHTML=`Rs:${x.price}`;
+
+    var img=document.createElement('img');
+
+    img.src=x.image;
+
+    var time=document.createElement('p')
+    time.innerHTML=`Time:${x.time}Min`;
+
+    var dis=document.createElement('p')
+
+    dis.innerHTML=x.discription;
+
+     
+
+    
+
+    but.onclick=function(){
+        cart(x);
+        console.log(x)
+          
+    }
+
+     div.append(h, p, img, time, dis, but)
+        cont.append(div)
+
+     
+    })
+  
+
+}
+how()
+
+function cart(x){
+    var dat=JSON.parse(localStorage.getItem('favs'));
+
+    if(dat==null){
+        dat=[];
+    }
+    else{
+        dat=JSON.parse(localStorage.getItem('favs'))
+    }
+    dat.push(x);
+
+    localStorage.setItem('favs',JSON.stringify(dat));
+
+}
+
+
+
+     
+</script>

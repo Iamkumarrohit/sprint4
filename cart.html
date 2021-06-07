@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     
+    <title>Cart</title>
+
+    <style>
+        button{
+            width:100px;
+           height:50px;
+           color: #fff;
+           background-color: rgb(139, 35, 35);
+        }
+        button:hover{
+            background-color:red;
+            shadow: 10px;
+        }
+
+          img{
+        width:300px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    #content{
+        display:flex;
+        flex-direction: row;
+    
+    }
+    </style>
+    
+</head>
+<body>
+    <h1>My Carts</h1>
+
+    <div id="content"></div>
+
+<button onclick="Submmit(event)">Submit Order</button>
+</body>
+</html>
+
+<script>
+function Submmit(e){
+    e.preventDefault();
+    var arr=["  Your order is accepted",
+"Your order is being cooked",
+"Your order is ready",
+"Order out for delivery",
+"Order delivered"];
+
+     var time=function (){
+         alert(arr[i]);
+     }
+     setTimeout(()=>{
+         alert(arr[0]);
+     },000)
+
+      setTimeout(() => {
+        alert(arr[1]);
+    }, 3000)
+
+     setTimeout(() => {
+        alert(arr[2]);
+    }, 80000)
+
+     setTimeout(() => {
+        alert(arr[3]);
+    }, 10000)
+
+
+     setTimeout(() => {
+        alert(arr[4]);
+    }, 12000)
+
+}
+
+    function SShow() {
+        var fav = JSON.parse(localStorage.getItem('favs'))
+        console.log(fav)
+
+
+        
+         for (var i = 0; i < fav.length; i++) {
+            var cont = document.getElementById("content")
+            var div = document.createElement('div')
+
+             
+
+            var h = document.createElement('h2')
+            h.innerHTML = fav[i].name;
+            h.style.color = "green"
+
+            var p = document.createElement('p');
+            p.innerHTML = `Rs:${fav[i].price}`;
+
+            var img = document.createElement('img');
+
+            img.src = fav[i].image;
+
+            var time = document.createElement('p')
+            time.innerHTML = `Time:${fav[i].time}Min`;
+
+            var dis = document.createElement('p')
+            dis.innerHTML =fav[i].discription;
+
+            cont.append(div)
+            div.append(h,p,img,time,dis)
+        }
+    }
+    SShow()
+
+
+
+ </script>
